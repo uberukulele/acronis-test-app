@@ -1,0 +1,10 @@
+{
+  "menu": {
+    "about-menu-item": "About",
+    "todo-menu-item": "Todo"
+  },
+  "validation": {
+    "required": "Field is required",
+    "maxLength": "The maximum length for this field is {max}"
+  }
+}

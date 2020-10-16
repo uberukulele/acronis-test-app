@@ -1,0 +1,10 @@
+{
+  "menu": {
+    "about-menu-item": "О программе",
+    "todo-menu-item": "Планировщик"
+  },
+  "validation": {
+    "required": "Поле обязательно для заполнения",
+    "maxLength": "Максимальная длина поля: {max}"
+  }
+}
