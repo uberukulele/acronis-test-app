@@ -9,15 +9,29 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "element-ui": "^2.13.2",
+    "lodash": "^4.17.20",
+    "noty": "^3.2.0-beta",
+    "reset-css": "^5.0.1",
+    "vue": "^2.6.11",
+    "vue-bem-cn": "^1.1.1",
+    "vue-i18n": "^8.22.0",
+    "vue-router": "^3.4.6",
+    "vue-virtual-scroller": "^1.0.10",
+    "vuelidate": "^0.7.5",
+    "vuex": "^3.5.1",
+    "vuex-pathify": "^1.4.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",
     "@vue/cli-plugin-eslint": "^4.5.0",
     "@vue/cli-service": "^4.5.0",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -32,7 +46,24 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/name-property-casing": [
+        "error",
+        "kebab-case"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "comma-dangle": [
+        "error",
+        "never"
+      ]
+    }
   },
   "browserslist": [
     "> 1%",
