@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
   import AppHeader from '@/components/viewport/AppHeader'
 
   export default {
@@ -23,7 +22,7 @@
     width: 100%;
 
     * {
-      font-family 'Open Sans', sans-serif;
+      font-family Helvetica
       box-sizing: border-box;
     }
   }
