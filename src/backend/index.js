@@ -1,4 +1,4 @@
-import { getLocalData, setLocalData, generateID } from '@/utils'
+import { generateID, getLocalData, setLocalData } from '@/utils'
 
 //errors code
 const TODO_NOT_FOUND = '1'
@@ -40,8 +40,8 @@ function request ({ type, key, data, possibleError }) {
 }
 
 export default {
-  fetchTodos () {
-    return request({
+  async fetchTodos () {
+    return await request({
       type: 'read',
       key: 'todos',
       possibleError: SERVER_IS_DOWN
@@ -87,7 +87,7 @@ export default {
   },
 
   deleteTodo (todoId) {
-    let possibleError = TODO_NOT_FOUND
+    let possibleError = SERVER_IS_DOWN
     let todos = readAction('todos') || []
     let todoIndex = todos.findIndex(({ id }) => id === todoId)
 

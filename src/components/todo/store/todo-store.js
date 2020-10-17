@@ -31,8 +31,9 @@ const actions = {
     try {
       let todo = await Backend.createTodo(newTodo)
       dispatch('setTodos', [todo, ...todos])
-    } catch {
+    } catch (e) {
       dispatch('setTodos', [...todos])
+      throw e
     } finally {
       dispatch('setLoading', false)
     }
@@ -51,8 +52,9 @@ const actions = {
         resultTodos[targetTodoIndex] = todo
         dispatch('setTodos', resultTodos)
       }
-    } catch {
+    } catch (e) {
       dispatch('setTodos', todos.slice())
+      throw e
     } finally {
       dispatch('setLoading', false)
     }
@@ -71,8 +73,9 @@ const actions = {
         resultTodos.splice(targetTodoIndex, 1)
         dispatch('setTodos', resultTodos)
       }
-    } catch {
+    } catch (e) {
       dispatch('setTodos', todos.slice())
+      throw e
     } finally {
       dispatch('setLoading', false)
     }
