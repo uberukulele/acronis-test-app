@@ -2,6 +2,7 @@
   <div :class="b({ error: hasErrors })">
     <el-input v-model="text"
               v-bind="$attrs"
+              v-on="$listeners"
               :class="b('input')"
               @input="$v.$touch"/>
     <div v-if="hasErrors"
@@ -51,6 +52,13 @@
       }
     },
 
+    methods: {
+      reset () {
+        this.text = ''
+        this.$v.$reset()
+      }
+    },
+
     validations () {
       if (this.validations) {
         return {
@@ -68,7 +76,7 @@
   $errorColor = #d32f2f
 
   .text-input {
-    &--error &__input textarea {
+    &--error &__input .el-input__inner {
       border-color $errorColor
     }
 

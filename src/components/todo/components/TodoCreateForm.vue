@@ -3,10 +3,14 @@
     <text-input v-model="currentTodo.text"
                 :placeholder="$t('todos.new-todo-input-placeholder')"
                 :validations="validations"
-                type="textarea"
-                autosize
+                :class="b('input')"
+                type="text"
+                ref="input"
+                @keyup.native.enter="maybeCreateTodo"
     />
-    <el-button type="primary"
+    <el-button :class="b('button')"
+               type="primary"
+               :disabled="!isValid"
                @click="maybeCreateTodo">{{ $t('todos.new-todo-button') }}
     </el-button>
   </div>
@@ -16,6 +20,7 @@
   import { Button } from 'element-ui'
   import TextInput from '@/components/common/input/TextInput'
   import { required, maxLength } from 'vuelidate/lib/validators'
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'todo-create-form',
@@ -35,14 +40,48 @@
       }
     },
 
-    methods: {
-      maybeCreateTodo () {
+    computed: {
+      isValid () {
+        return !this.$v.$invalid
+      }
+    },
 
+    validations () {
+      console.log(this)
+      return {
+        currentTodo: {
+          done: false,
+          text: this.validations
+        }
+      }
+    },
+
+    methods: {
+      ...mapActions(['createTodo']),
+      async maybeCreateTodo () {
+        if (this.isValid) {
+          try {
+            await this.createTodo(this.currentTodo)
+            this.$refs.input.reset()
+          } catch (e) {
+            console.log(e)
+          }
+        }
       }
     }
   }
 </script>
 
-<style scoped>
+<style lang="stylus">
+  .todo-create-form {
+    display flex
+    align-items flex-start;
+    padding 22px 20px
 
+    &__input {
+      flex: 1
+      margin-right 16px
+    }
+
+  }
 </style>

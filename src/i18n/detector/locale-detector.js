@@ -1,5 +1,7 @@
+import { getLocalData } from '@/utils'
+
 export default function detectLocale (allowedLocales, fallbackLocale) {
-  let locale = navigator.language
+  let locale = getLocalData('locale') || navigator.language
 
   if (allowedLocales.includes(locale)) {
     return locale

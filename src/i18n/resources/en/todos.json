@@ -1,4 +1,8 @@
 {
   "new-todo-input-placeholder": "New todo",
-  "new-todo-button": "Add"
+  "new-todo-button": "Add",
+  "empty-list": "No items",
+  "refresh": "Refresh",
+  "delete-todo-q": "Delete the selected todo?",
+  "delete-tooltip": "Delete todo"
 }

@@ -1,7 +1,7 @@
 import { getLocalData, setLocalData, generateID } from '@/utils'
 
 function readAction (key) {
-  getLocalData(key)
+  return getLocalData(key)
 }
 
 function writeAction (key, data) {
@@ -13,7 +13,7 @@ function request ({ type, key, data, possibleError }) {
     // fake http request delay - 500ms
     setTimeout(() => {
       // backend server can throw errors sometimes
-      if (Math.random() > 0.3) {
+      if (Math.random() > 0.1) {
         switch (type) {
           case 'read':
             resolve(readAction(key))
@@ -48,7 +48,7 @@ export default {
       id: generateID()
     }
 
-    todos.push(todo)
+    todos.unshift(todo)
 
     await request({
       type: 'write',

@@ -10,7 +10,7 @@
 
 <script>
 
-  import AppHeader from '@/components/common/header/AppHeader'
+  import AppHeader from '@/components/viewport/AppHeader'
 
   export default {
     name: 'app',
@@ -23,7 +23,8 @@
     width: 100%;
 
     * {
-      font-family: 'Open Sans', sans-serif;
+      font-family 'Open Sans', sans-serif;
+      box-sizing: border-box;
     }
   }
 
@@ -35,7 +36,16 @@
 
     &__main {
       flex: 1
+      height 500px
       background-color #F4F5F9
     }
+  }
+
+  .scroll-shadows {
+    background: /* Shadow covers */ linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */ radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0)) 0 100%;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+    background-attachment: local, local, scroll, scroll;
   }
 </style>

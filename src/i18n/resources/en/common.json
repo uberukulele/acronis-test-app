@@ -6,5 +6,10 @@
   "validation": {
     "required": "Field is required",
     "maxLength": "The maximum length for this field is {max}"
+  },
+  "confirm-title": "Confirmation",
+  "buttons": {
+    "delete": "Delete",
+    "cancel": "Cancel"
   }
 }

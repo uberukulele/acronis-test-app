@@ -6,5 +6,10 @@
   "validation": {
     "required": "Поле обязательно для заполнения",
     "maxLength": "Максимальная длина поля: {max}"
+  },
+  "confirm-title": "Подтверждение",
+  "buttons": {
+    "delete": "Удалить",
+    "cancel": "Отмена"
   }
 }

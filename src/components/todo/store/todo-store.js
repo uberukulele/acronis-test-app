@@ -3,8 +3,10 @@ import { showError } from '@/notifications'
 import Backend from '@/backend'
 import Vuex from 'vuex'
 
+console.log(Backend)
 const state = () => ({
-  todos: []
+  todos: [],
+  loading: false
 })
 
 const getters = make.getters(state)
@@ -12,7 +14,9 @@ const mutations = make.mutations(state)
 const actions = {
   ...make.actions(state),
 
-  async fetch ({ dispatch }) {
+  async fetchTodos ({ dispatch }) {
+    dispatch('setLoading', true)
+
     try {
       let todos = await Backend.fetchTodos()
       dispatch('setTodos', todos)
@@ -20,20 +24,29 @@ const actions = {
       console.log(e)
       showError(e.message)
     }
+
+    dispatch('setLoading', false)
   },
 
   async createTodo ({ dispatch, getters }, newTodo) {
-    let todos = getters.todos
+    dispatch('setLoading', true)
+
+    let todos = getters.todos || []
     try {
       let todo = await Backend.createTodo(newTodo)
-      dispatch('setTodos', [...todos, todo])
+      dispatch('setTodos', [todo, ...todos])
+      dispatch('setLoading', false)
     } catch (e) {
       dispatch('setTodos', [...todos])
       showError(e.message)
+      dispatch('setLoading', false)
+      throw e
     }
   },
 
   async updateTodo ({ dispatch, getters }, todo) {
+    dispatch('setLoading', true)
+
     let todos = getters.todos
     try {
       await Backend.updateTodo(todo)
@@ -47,9 +60,36 @@ const actions = {
         showError('Todo not found')
       }
     } catch (e) {
-      dispatch('setTodos', [...todos])
+      console.log('asd')
+      dispatch('setTodos', todos.slice())
       showError(e.message)
     }
+
+    dispatch('setLoading', false)
+  },
+
+  async deleteTodo ({ dispatch, getters }, todoId) {
+    dispatch('setLoading', true)
+
+    let todos = getters.todos
+    try {
+      await Backend.deleteTodo(todoId)
+      let resultTodos = todos.slice()
+      let targetTodoIndex = todos.findIndex(({ id }) => id === todoId)
+
+      if (targetTodoIndex >= 0) {
+        resultTodos.splice(targetTodoIndex, 1)
+        dispatch('setTodos', resultTodos)
+      } else {
+        showError('Todo not found')
+      }
+    } catch (e) {
+      console.log('asd')
+      dispatch('setTodos', todos.slice())
+      showError(e.message)
+    }
+
+    dispatch('setLoading', false)
   }
 }
 

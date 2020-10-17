@@ -1,4 +1,8 @@
 {
   "new-todo-input-placeholder": "Новое задание",
-  "new-todo-button": "Добавить"
+  "new-todo-button": "Добавить",
+  "empty-list": "Записей не найдено",
+  "refresh": "Обновить",
+  "delete-todo-q": "Удалить выбранне задание?",
+  "delete-tooltip": "Удалить задание"
 }

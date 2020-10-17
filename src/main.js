@@ -1,6 +1,8 @@
 import 'reset-css'
 import '@/plugins/bem-cn'
 import '@/plugins/vuelidate'
+import '@/plugins/element-ui'
+import '@/theme/index.css'
 
 import Vue from 'vue'
 import App from './App.vue'
