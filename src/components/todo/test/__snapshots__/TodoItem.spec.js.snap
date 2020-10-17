@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoListItem renders correctly 1`] = `
+<div
+  class="todo-list-item"
+>
+  <el-checkbox-stub
+    value="true"
+  />
+   
+  <span
+    class="todo-list-item__text"
+    title="Test 1"
+  >
+    Test 1
+  </span>
+   
+  <el-tooltip-stub
+    appendtobody="true"
+    arrowoffset="0"
+    boundariespadding="5"
+    content="todos.delete-tooltip"
+    effect="dark"
+    enterable="true"
+    hideafter="0"
+    offset="0"
+    opendelay="0"
+    placement="bottom-start"
+    popperoptions="[object Object]"
+    tabindex="0"
+    transformorigin="true"
+    transition="el-fade-in-linear"
+    visiblearrow="true"
+  >
+    <i
+      class="todo-list-item__remove-icon el-icon-close"
+    />
+  </el-tooltip-stub>
+</div>
+`;

@@ -1,8 +1,5 @@
 import 'reset-css'
-import '@/plugins/bem-cn'
-import '@/plugins/vuelidate'
-import '@/plugins/element-ui'
-import '@/plugins/error-reporter'
+import '@/plugins'
 import '@/theme/index.css'
 import '@/theme/scrollbars.css'
 

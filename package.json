@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -24,11 +25,15 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",
     "@vue/cli-plugin-eslint": "^4.5.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.7",
     "@vue/cli-service": "^4.5.0",
+    "@vue/test-utils": "^1.1.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.5.2",
     "babel-plugin-component": "^1.1.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jest-transform-stub": "^2.0.0",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.3",
     "stylus": "^0.54.8",
@@ -64,11 +69,64 @@
         "error",
         "never"
       ]
-    }
+    },
+    "globals": {
+      "describe": false,
+      "it": false,
+      "test": false,
+      "jest": false,
+      "expect": false,
+      "beforeAll": false,
+      "beforeEach": false,
+      "spyOn": false,
+      "jasmine": false,
+      "afterEach": false
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./tests/env.js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testURL": "http://localhost/",
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  }
 }

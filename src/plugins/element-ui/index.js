@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import { MessageBox } from 'element-ui'
 
-Vue.prototype.$msgbox = MessageBox
-Vue.prototype.$alert = MessageBox.alert
-Vue.prototype.$confirm = MessageBox.confirm
-Vue.prototype.$prompt = MessageBox.prompt
+// fix bug https://github.com/ElementUI/babel-plugin-component/issues/31
+const _MessageBox = MessageBox
+const { alert, confirm, prompt } = _MessageBox
+Vue.prototype.$msgbox = _MessageBox
+Vue.prototype.$alert = alert
+Vue.prototype.$confirm = confirm
+Vue.prototype.$prompt = prompt
