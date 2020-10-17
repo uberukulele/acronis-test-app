@@ -8,7 +8,7 @@
       {{ $t('todos.empty-list') }}
       <el-link :class="b('refresh-link')"
                type="primary"
-               @click="fetchTodos">{{ $t('todos.refresh') }}
+               @click="refresh">{{ $t('todos.refresh') }}
       </el-link>
     </div>
   </div>
@@ -27,7 +27,14 @@
       ...mapGetters(['todos'])
     },
     methods: {
-      ...mapActions(['fetchTodos'])
+      ...mapActions(['fetchTodos']),
+      async refresh () {
+        try {
+          await this.fetchTodos()
+        } catch (e) {
+          this.$showError(e)
+        }
+      }
     }
   }
 </script>

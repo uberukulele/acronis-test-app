@@ -11,3 +11,13 @@ export function showError (text) {
     text
   }).show()
 }
+
+export function showSuccess (text) {
+  new Noty({
+    theme: 'relax',
+    type: 'success',
+    progressBar: true,
+    timeout: 2000,
+    text
+  }).show()
+}

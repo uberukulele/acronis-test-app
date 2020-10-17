@@ -17,6 +17,7 @@
 <script>
   import { mapActions } from 'vuex'
   import { Checkbox, Tooltip } from 'element-ui'
+  import { showSuccess } from '@/notifications'
 
   export default {
     name: 'todo-list-item',
@@ -32,11 +33,15 @@
     },
     methods: {
       ...mapActions(['updateTodo', 'deleteTodo']),
-      toggleTodoDone (done) {
-        this.updateTodo({
-          ...this.todo,
-          done
-        })
+      async toggleTodoDone (done) {
+        try {
+          await this.updateTodo({
+            ...this.todo,
+            done
+          })
+        } catch (e) {
+          this.$showError(e)
+        }
       },
 
       async maybeDeleteTodo () {
@@ -47,7 +52,13 @@
                 cancelButtonText: this.$t('common.buttons.cancel'),
                 type: 'warning'
               })
-          await this.deleteTodo(this.todo.id)
+
+          try {
+            await this.deleteTodo(this.todo.id)
+            showSuccess(this.$t('todos.success-delet-msg'))
+          } catch (e) {
+            this.$showError(e)
+          }
         } catch (e) {
           console.log(e)
         }

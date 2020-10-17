@@ -1,9 +1,7 @@
 import { make } from 'vuex-pathify'
-import { showError } from '@/notifications'
 import Backend from '@/backend'
 import Vuex from 'vuex'
 
-console.log(Backend)
 const state = () => ({
   todos: [],
   loading: false
@@ -11,21 +9,19 @@ const state = () => ({
 
 const getters = make.getters(state)
 const mutations = make.mutations(state)
+
 const actions = {
   ...make.actions(state),
 
   async fetchTodos ({ dispatch }) {
     dispatch('setLoading', true)
-
     try {
       let todos = await Backend.fetchTodos()
       dispatch('setTodos', todos)
-    } catch (e) {
-      console.log(e)
-      showError(e.message)
+    } finally {
+      dispatch('setLoading', false)
     }
 
-    dispatch('setLoading', false)
   },
 
   async createTodo ({ dispatch, getters }, newTodo) {
@@ -35,12 +31,10 @@ const actions = {
     try {
       let todo = await Backend.createTodo(newTodo)
       dispatch('setTodos', [todo, ...todos])
-      dispatch('setLoading', false)
-    } catch (e) {
+    } catch {
       dispatch('setTodos', [...todos])
-      showError(e.message)
+    } finally {
       dispatch('setLoading', false)
-      throw e
     }
   },
 
@@ -56,16 +50,12 @@ const actions = {
       if (targetTodoIndex >= 0) {
         resultTodos[targetTodoIndex] = todo
         dispatch('setTodos', resultTodos)
-      } else {
-        showError('Todo not found')
       }
-    } catch (e) {
-      console.log('asd')
+    } catch {
       dispatch('setTodos', todos.slice())
-      showError(e.message)
+    } finally {
+      dispatch('setLoading', false)
     }
-
-    dispatch('setLoading', false)
   },
 
   async deleteTodo ({ dispatch, getters }, todoId) {
@@ -80,21 +70,16 @@ const actions = {
       if (targetTodoIndex >= 0) {
         resultTodos.splice(targetTodoIndex, 1)
         dispatch('setTodos', resultTodos)
-      } else {
-        showError('Todo not found')
       }
-    } catch (e) {
-      console.log('asd')
+    } catch {
       dispatch('setTodos', todos.slice())
-      showError(e.message)
+    } finally {
+      dispatch('setLoading', false)
     }
-
-    dispatch('setLoading', false)
   }
 }
 
 export default new Vuex.Store({
-  namespaced: true,
   state,
   getters,
   mutations,

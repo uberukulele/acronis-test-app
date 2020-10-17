@@ -22,11 +22,15 @@
     computed: {
       ...mapGetters(['loading'])
     },
-    created () {
-      this.fetchTodos()
+    async created () {
+      try {
+        await this.fetchTodos()
+      } catch (e) {
+        this.$showError(e)
+      }
     },
     methods: {
-      ...mapActions(['fetchTodos', 'createTodo', 'updateTodo'])
+      ...mapActions(['fetchTodos'])
     }
   }
 </script>

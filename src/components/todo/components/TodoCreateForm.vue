@@ -21,6 +21,7 @@
   import TextInput from '@/components/common/input/TextInput'
   import { required, maxLength } from 'vuelidate/lib/validators'
   import { mapActions } from 'vuex'
+  import { showSuccess } from '@/notifications'
 
   export default {
     name: 'todo-create-form',
@@ -47,7 +48,6 @@
     },
 
     validations () {
-      console.log(this)
       return {
         currentTodo: {
           done: false,
@@ -63,8 +63,9 @@
           try {
             await this.createTodo(this.currentTodo)
             this.$refs.input.reset()
+            showSuccess(this.$t('todos.success-msg'))
           } catch (e) {
-            console.log(e)
+            this.$showError(e)
           }
         }
       }

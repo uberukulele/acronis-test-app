@@ -11,5 +11,9 @@
   "buttons": {
     "delete": "Delete",
     "cancel": "Cancel"
+  },
+  "errors": {
+    "1": "Todo not found",
+    "2": "Server is down"
   }
 }

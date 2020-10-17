@@ -1,5 +1,10 @@
 import { getLocalData, setLocalData, generateID } from '@/utils'
 
+//errors code
+const TODO_NOT_FOUND = '1'
+const SERVER_IS_DOWN = '2'
+
+
 function readAction (key) {
   return getLocalData(key)
 }
@@ -25,7 +30,9 @@ function request ({ type, key, data, possibleError }) {
             reject(new Error(`The "${type}" is wrong request type. Allowed types are "read", "write"`))
         }
       } else {
-        reject(new Error(possibleError))
+        let error = new Error('Request error')
+        error.code = possibleError
+        reject(error)
       }
     }, 500)
   })
@@ -37,7 +44,7 @@ export default {
     return request({
       type: 'read',
       key: 'todos',
-      possibleError: 'Server is down'
+      possibleError: SERVER_IS_DOWN
     }) || []
   },
 
@@ -54,14 +61,14 @@ export default {
       type: 'write',
       key: 'todos',
       data: todos,
-      possibleError: 'Server is down'
+      possibleError: SERVER_IS_DOWN
     })
 
     return todo
   },
 
   updateTodo (todo) {
-    let possibleError = 'Todo not found'
+    let possibleError = TODO_NOT_FOUND
     let todos = readAction('todos') || []
     let todoIndex = todos.findIndex(({ id }) => id === todo.id)
 
@@ -80,7 +87,7 @@ export default {
   },
 
   deleteTodo (todoId) {
-    let possibleError = 'Todo not found'
+    let possibleError = TODO_NOT_FOUND
     let todos = readAction('todos') || []
     let todoIndex = todos.findIndex(({ id }) => id === todoId)
 
