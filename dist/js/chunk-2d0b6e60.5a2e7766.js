@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b6e60"],{"1eb8":function(e){e.exports=JSON.parse('{"new-todo-input-placeholder":"Новое задание","new-todo-button":"Добавить","empty-list":"Записей не найдено","refresh":"Обновить","delete-todo-q":"Удалить выбранне задание?","delete-tooltip":"Удалить задание","add-success-msg":"Задание успешно добавлено","delete-success-msg":"Задание успешно удалено"}')}}]);
+//# sourceMappingURL=chunk-2d0b6e60.5a2e7766.js.map

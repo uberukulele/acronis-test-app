@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d21ebd3"],{d79c:function(e){e.exports=JSON.parse('{"menu":{"about-menu-item":"About","todo-menu-item":"Todo"},"validation":{"required":"Field is required","maxLength":"The maximum length for this field is {max}"},"confirm-title":"Confirmation","buttons":{"delete":"Delete","cancel":"Cancel"},"errors":{"1":"Todo not found","2":"Server is down"}}')}}]);
+//# sourceMappingURL=chunk-2d21ebd3.a48d00b3.js.map

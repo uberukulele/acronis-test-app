@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b2003"],{"21f4":function(e){e.exports=JSON.parse('{"menu":{"about-menu-item":"О программе","todo-menu-item":"Планировщик"},"validation":{"required":"Поле обязательно для заполнения","maxLength":"Максимальная длина поля: {max}"},"confirm-title":"Подтверждение","buttons":{"delete":"Удалить","cancel":"Отмена"},"errors":{"1":"Задание не найдено","2":"Сервер недоступен"}}')}}]);
+//# sourceMappingURL=chunk-2d0b2003.553a5bd8.js.map
