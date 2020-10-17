@@ -63,7 +63,7 @@
           try {
             await this.createTodo(this.currentTodo)
             this.$refs.input.reset()
-            showSuccess(this.$t('todos.success-msg'))
+            showSuccess(this.$t('todos.add-success-msg'))
           } catch (e) {
             this.$showError(e)
           }

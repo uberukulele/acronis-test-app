@@ -1,10 +1,10 @@
 import Noty from 'noty'
 import 'noty/lib/noty.css'
-import 'noty/lib/themes/relax.css'
+import 'noty/lib/themes/mint.css'
 
 export function showError (text) {
   new Noty({
-    theme: 'relax',
+    theme: 'mint',
     type: 'error',
     progressBar: true,
     timeout: 2000,
@@ -14,7 +14,7 @@ export function showError (text) {
 
 export function showSuccess (text) {
   new Noty({
-    theme: 'relax',
+    theme: 'mint',
     type: 'success',
     progressBar: true,
     timeout: 2000,

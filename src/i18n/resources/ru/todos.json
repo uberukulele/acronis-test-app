@@ -4,5 +4,7 @@
   "empty-list": "Записей не найдено",
   "refresh": "Обновить",
   "delete-todo-q": "Удалить выбранне задание?",
-  "delete-tooltip": "Удалить задание"
+  "delete-tooltip": "Удалить задание",
+  "add-success-msg": "Задание успешно добавлено",
+  "delete-success-msg": "Задание успешно удалено"
 }

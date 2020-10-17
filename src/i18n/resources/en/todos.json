@@ -4,5 +4,7 @@
   "empty-list": "No items",
   "refresh": "Refresh",
   "delete-todo-q": "Delete the selected todo?",
-  "delete-tooltip": "Delete todo"
+  "delete-tooltip": "Delete the todo",
+  "add-success-msg": "Todo is successfully created",
+  "delete-success-msg": "Todo has been successfully deleted"
 }

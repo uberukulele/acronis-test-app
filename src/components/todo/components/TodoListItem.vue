@@ -55,7 +55,7 @@
 
           try {
             await this.deleteTodo(this.todo.id)
-            showSuccess(this.$t('todos.success-delet-msg'))
+            showSuccess(this.$t('todos.delete-success-msg'))
           } catch (e) {
             this.$showError(e)
           }
